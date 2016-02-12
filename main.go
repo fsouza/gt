@@ -100,15 +100,7 @@ func main() {
 		if flagList {
 			log.Fatal("cannot use -l without package list or with testing flags other than -v and -short")
 		}
-		cmd := exec.Command("go", append([]string{"test"}, os.Args[1:]...)...)
-		cmd.Stdin = os.Stdin
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		err := cmd.Run()
-		if err != nil {
-			log.Fatalf("go test: %v", err)
-		}
-		return
+		pkgs = []string{"./..."}
 	}
 
 	if flagTiming {
