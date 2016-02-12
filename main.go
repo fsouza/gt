@@ -54,7 +54,7 @@
 //	ok  	strings	0.629s
 //	$
 //
-package main // import "rsc.io/gt"
+package main
 
 import (
 	"bufio"
