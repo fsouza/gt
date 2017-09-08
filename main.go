@@ -112,7 +112,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("go list: %v", err)
 	}
-	pkgs = filterPackages(strings.Fields(string(out)))
+	pkgs = strings.Fields(string(out))
 
 	if flagTiming {
 		log.Printf("%.2fs go list -json", time.Since(start).Seconds())
@@ -504,14 +504,4 @@ func parseFlags() (opts, pkgs []string) {
 		return nil, nil
 	}
 	return opts, pkgs
-}
-
-func filterPackages(in []string) []string {
-	pkgs := make([]string, 0, len(in))
-	for _, pkg := range in {
-		if !strings.Contains(pkg, "/vendor/") {
-			pkgs = append(pkgs, pkg)
-		}
-	}
-	return pkgs
 }
