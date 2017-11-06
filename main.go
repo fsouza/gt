@@ -203,7 +203,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		args := []string{"test"}
+		args := []string{"test", "-count=1"}
 		args = append(args, opts...)
 		args = append(args, toRun...)
 		cmd = exec.Command("go", args...)
@@ -493,7 +493,6 @@ func parseFlags() (opts, pkgs []string) {
 			continue
 		}
 		if arg == "-f" {
-			opts = append(opts, "-count=1")
 			flagForce = true
 			continue
 		}
