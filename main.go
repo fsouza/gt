@@ -493,6 +493,7 @@ func parseFlags() (opts, pkgs []string) {
 			continue
 		}
 		if arg == "-f" {
+			opts = append(opts, "-count=1")
 			flagForce = true
 			continue
 		}
